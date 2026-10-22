@@ -1,1 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hyderabad Cricket Connect</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f6f2;color:#17251c}
+header{background:#123d2b;color:white;padding:24px 18px;text-align:center}
+.logo{font-size:42px}
+header h1{margin:8px 0;font-size:27px}
+header p{margin:8px 0;color:#d9eddf}
+main{max-width:600px;margin:22px auto;padding:0 14px}
+.card{background:white;border-radius:16px;padding:20px;margin-bottom:18px;box-shadow:0 3px 14px #0000000c}
+h2{margin-top:0;color:#145b39}
+label{display:block;font-weight:bold;margin:15px 0 7px}
+input,select,textarea{width:100%;padding:13px;border:1px solid #cbd5cd;border-radius:9px;font-size:16px;background:white}
+input[type=checkbox]{width:auto}
+.notice{background:#fff5dc;border-left:4px solid #d9a323;padding:12px;border-radius:7px;font-size:14px;line-height:1.5;margin-top:14px}
+button{width:100%;padding:15px;border:0;border-radius:10px;background:#187447;color:white;font-size:17px;font-weight:bold;margin-top:18px}
+button:active{opacity:.8}
+.small{font-size:13px;color:#58665d;line-height:1.5}
+#result{display:none;background:#e4f6e8;padding:14px;border-radius:9px;margin-top:16px;line-height:1.5}
+footer{text-align:center;color:#657269;font-size:13px;padding:20px}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">🏏</div>
+<h1>Hyderabad Cricket Connect</h1>
+<p>Find your team. Find your match.</p>
+</header>
 
+<main>
+<section class="card">
+<h2>Let's arrange a match!</h2>
+<p>Connect with cricket players and teams across Hyderabad.</p>
+
+<form id="matchForm">
+<label for="name">Your name</label>
+<input id="name" required maxlength="60" placeholder="Enter your name">
+
+<label for="role">Who are you?</label>
+<select id="role" required>
+<option value="">Select your role</option>
+<option>Player</option>
+<option>Team Captain</option>
+<option>Academy Coach</option>
+</select>
+
+<div id="academyFields" hidden>
+<label for="academy">Academy name</label>
+<input id="academy" maxlength="100" placeholder="Enter academy name">
+<label for="coachNeed">What does your academy need?</label>
+<select id="coachNeed">
+<option>Find opponent teams</option>
+<option>Find players</option>
+<option>Announce trials</option>
+<option>Arrange practice matches</option>
+</select>
+<label for="academyAge">Age groups coached</label>
+<input id="academyAge" placeholder="e.g. Under-14, Under-16">
+</div>
+
+<label for="ball">Cricket type</label>
+<select id="ball" required>
+<option value="">Select ball type</option>
+<option>Leather ball</option>
+<option>Tennis ball</option>
+</select>
+
+<div class="notice" id="safety">
+🏏 **Play safe. Follow the rules.**<br>
+Choose your cricket format and follow the ground's safety instructions. Leather-ball matches require appropriate protective equipment.
+</div>
+
+<label for="date">Preferred match date</label>
+<input id="date" type="date" required>
+
+<label for="time">Preferred time</label>
+<select id="time" required>
+<option>Morning</option>
+<option>Afternoon</option>
+<option>Evening</option>
+</select>
+
+<label for="area">Area in Hyderabad</label>
+<input id="area" required maxlength="100" placeholder="e.g. Kukatpally, Miyapur, Uppal">
+
+<label for="purpose">What are you looking for?</label>
+<select id="purpose" required>
+<option>Find an opponent team</option>
+<option>Find players for my team</option>
+<option>Find practice matches</option>
+<option>Find academy or trial opportunities</option>
+</select>
+
+<label for="players">Players available</label>
+<select id="players">
+<option>Full team (11 players)</option>
+<option>6–10 players</option>
+<option>Fewer than 6 players</option>
+</select>
+
+<label for="age">Age group</label>
+<select id="age" required>
+<option>Under 14</option>
+<option>Under 16</option>
+<option>Under 19</option>
+<option>18+</option>
+<option>Mixed / open age</option>
+</select>
+
+<label for="phone">Captain's or responsible adult's mobile number</label>
+<input id="phone" type="tel" required inputmode="tel"
+placeholder="Enter mobile number" pattern="[0-9+() -]{10,20}">
+<p class="small">Your number should only be shared with the other team after both sides agree. This demo does not send or store your number online.</p>
+
+<label for="details">Extra details (optional)</label>
+<textarea id="details" rows="3" maxlength="500"
+placeholder="Ground preference, match fees, overs, etc."></textarea>
+
+<label style="font-weight:normal;line-height:1.5">
+<input id="agree" type="checkbox" required>
+I agree to follow cricket rules, ground instructions, and safety requirements.
+</label>
+
+<button type="submit">Preview Match Request</button>
+<div id="result" role="status"></div>
+</form>
+</section>
+
+<section class="card">
+<h2>How it works</h2>
+<p>1. Enter your match requirements.</p>
+<p>2. Find a suitable team in your area.</p>
+<p>3. Send a match request.</p>
+<p>4. Both captains agree on the details before confirming.</p>
+<p class="small">Team search, online registration, shared match requests, and AI calling are planned features. They are not connected in this prototype yet.</p>
+</section>
+</main>
+
+<footer>Hyderabad Cricket Connect · Play together. Play safely. 🏏</footer>
+
+<script>
+const role = document.getElementById('role');
+const academyFields = document.getElementById('academyFields');
+const ball = document.getElementById('ball');
+const safety = document.getElementById('safety');
+const date = document.getElementById('date');
+
+role.addEventListener('change', function(){
+  academyFields.hidden = role.value !== 'Academy Coach';
+  document.getElementById('academy').required =
+    role.value === 'Academy Coach';
+});
+
+ball.addEventListener('change', function(){
+  if(ball.value === 'Leather ball'){
+    safety.innerHTML = '🏏 <strong>Leather-ball safety:</strong><br>Appropriate protective equipment is essential. Use a helmet when batting against pace bowling, pads and gloves as appropriate, and follow ground safety instructions.';
+  } else {
+    safety.innerHTML = '🏏 <strong>Tennis-ball safety:</strong><br>Play safely, agree on match rules before starting, and follow ground instructions.';
+  }
+});
+
+const today = new Date();
+const localToday = new Date(today.getTime()-today.getTimezoneOffset()*60000)
+  .toISOString().slice(0,10);
+date.min = localToday;
+
+document.getElementById('matchForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const result = document.getElementById('result');
+  result.style.display = 'block';
+  result.textContent = 'Your form works! This is only a local preview. No request or mobile number has been sent or saved. Online team matching will work after we connect a secure database.';
+  result.scrollIntoView({behavior:'smooth',block:'center'});
+});
+</script>
+</body>
+  </html>
+  

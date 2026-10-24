@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,319 +13,387 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #f3f6f2;
-  color: #17251c;
+  background: #f2f7f2;
+  color: #203328;
 }
 
 header {
-  background: #123d2b;
+  background: #17643e;
   color: white;
-  padding: 24px 18px;
   text-align: center;
+  padding: 25px 15px;
 }
-.logo { font-size: 42px; }
-header h1 { margin: 8px 0; font-size: 27px; }
-header p { color: #d9eddf; }
 
-main { max-width: 600px; margin: 22px auto; padding: 0 14px; }
+header h1 { margin: 8px 0; font-size: 28px; }
+header p { margin-bottom: 0; }
+.logo { font-size: 45px; }
+
+main { max-width: 650px; margin: 22px auto; padding: 0 14px; }
+
 .card {
   background: white;
-  border-radius: 16px;
-  padding: 20px;
-  margin-bottom: 18px;
-  box-shadow: 0 3px 14px #0000000c;
+  padding: 22px;
+  margin-bottom: 20px;
+  border-radius: 14px;
+  box-shadow: 0 3px 12px #173d2510;
 }
-h2 { color: #145b39; }
-label { display: block; font-weight: bold; margin: 15px 0 7px; }
-input, select, textarea {
+
+h2 { color: #17643e; }
+
+label {
+  display: block;
+  margin: 15px 0 7px;
+  font-weight: bold;
+}
+
+input:not([type="checkbox"]),
+select, textarea {
+  display: block;
   width: 100%;
-  padding: 13px;
-  border: 1px solid #cbd5cd;
-  border-radius: 9px;
-  font-size: 16px;
-  background: white;
-}
-input[type=checkbox] { width: auto; }
-.notice {
-  background: #fff5dc;
-  border-left: 4px solid #d9a323;
   padding: 12px;
-  border-radius: 7px;
-  font-size: 14px;
-  line-height: 1.5;
-  margin-top: 14px;
+  border: 1px solid #bdcfc2;
+  border-radius: 8px;
+  background: white;
+  font-size: 16px;
 }
+
+input[type="checkbox"] {
+  width: auto;
+  margin-right: 7px;
+}
+
 button {
   width: 100%;
-  padding: 15px;
-  border: 0;
-  border-radius: 10px;
-  background: #187447;
-  color: white;
-  font-size: 17px;
-  font-weight: bold;
+  padding: 14px;
   margin-top: 18px;
+  border: 0;
+  border-radius: 8px;
+  background: #17643e;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
 }
-.small { font-size: 13px; color: #58665d; line-height: 1.5; }
-#result { display: none; background: #e4f6e8; padding: 14px; border-radius: 9px; margin-top: 16px; }
-footer { text-align: center; color: #657269; font-size: 13px; padding: 20px; }
 
-/* Cricket intro animation */
-#intro {
+.notice {
+  margin-top: 15px;
+  padding: 13px;
+  border-left: 4px solid #d4a32b;
+  border-radius: 6px;
+  background: #fff7df;
+  line-height: 1.6;
+}
+
+.small { font-size: 13px; color: #5c6a60; line-height: 1.5; }
+
+#result {
+  display: none;
+  padding: 13px;
+  margin-top: 15px;
+  background: #e5f5e9;
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #5c6a60;
+  font-size: 13px;
+}
+
+/* Animated opening */
+#cricket-intro {
   position: fixed;
   inset: 0;
-  z-index: 1000;
+  z-index: 99999;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: radial-gradient(circle, #21634b, #071426 75%);
+  background: radial-gradient(circle, #23734a, #092719);
   color: white;
+  animation: intro-fade 0.5s ease 2.7s forwards;
+}
+
+.intro-name {
+  padding: 0 15px;
   text-align: center;
-  animation: introOut 0.5s ease 2.8s forwards;
+  font-size: clamp(27px, 7vw, 43px);
+  font-weight: bold;
+  color: #ffe08a;
+  text-shadow: 0 0 16px #ffe08a50;
+  animation: title-in 0.6s ease both;
 }
-#intro h2 {
-  color: #ffd166;
-  font-size: clamp(28px, 7vw, 42px);
-  margin: 10px;
-  animation: titleIn 0.7s ease both;
+
+.intro-tagline {
+  text-align: center;
+  letter-spacing: 2px;
 }
-#intro .tagline { letter-spacing: 2px; padding: 0 12px; }
-#bat {
-  font-size: 100px;
+
+.intro-bat {
+  font-size: 90px;
   transform-origin: 70% 80%;
-  animation: batSwing 0.7s ease-in-out 0.35s both;
+  animation: bat-swing 0.7s ease-in-out 0.35s both;
 }
-#ball {
+
+.intro-ball {
   position: absolute;
-  left: 24%;
-  top: 49%;
-  font-size: 28px;
-  animation: ballHit 1.2s ease-in 0.65s both;
+  top: 48%;
+  left: 20%;
+  font-size: 26px;
+  animation: ball-hit 1.2s ease-in 0.65s both;
 }
-#skipIntro {
+
+#skip-intro {
   position: absolute;
-  bottom: 24px;
+  bottom: 25px;
   width: auto;
   padding: 10px 18px;
   border: 1px solid white;
-  border-radius: 22px;
-  background: #17382e;
+  border-radius: 25px;
+  background: #16452e;
   color: white;
-  font-size: 14px;
 }
-@keyframes batSwing {
-  from { transform: rotate(-65deg); }
+
+@keyframes bat-swing {
+  from { transform: rotate(-60deg); }
   to { transform: rotate(35deg); }
 }
-@keyframes ballHit {
-  0% { left: 24%; top: 49%; transform: scale(1); }
-  60% { left: 70%; top: 35%; transform: scale(1.8); }
+
+@keyframes ball-hit {
+  0% { left: 20%; top: 48%; transform: scale(1); }
+  60% { left: 72%; top: 32%; transform: scale(1.7); }
   100% { left: 48%; top: 48%; transform: scale(6); opacity: 0; }
 }
-@keyframes titleIn {
-  from { opacity: 0; transform: translateY(15px); }
+
+@keyframes title-in {
+  from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
 }
-@keyframes introOut {
+
+@keyframes intro-fade {
   to { opacity: 0; visibility: hidden; pointer-events: none; }
 }
+
 @media (prefers-reduced-motion: reduce) {
-  #intro, #intro h2, #bat, #ball { animation-duration: 0.01ms; }
+  #cricket-intro, .intro-name, .intro-bat, .intro-ball {
+    animation-duration: 0.01ms;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- Animated opening -->
-<div id="intro">
-  <h2>HYDERABAD<br>CRICKET CONNECT</h2>
-  <div id="bat">🏏</div>
-  <div id="ball">🔴</div>
-  <p class="tagline">YOUR CITY. YOUR TEAM. YOUR GAME.</p>
-  <button id="skipIntro" type="button" onclick="skipIntro()">Skip Intro</button>
+<div id="cricket-intro">
+  <div class="intro-name">HYDERABAD<br>CRICKET CONNECT</div>
+  <div class="intro-bat">🏏</div>
+  <div class="intro-ball">🔴</div>
+  <p class="intro-tagline">YOUR CITY. YOUR TEAM. YOUR GAME.</p>
+  <button id="skip-intro" type="button">Skip Intro</button>
 </div>
 
 <header>
   <div class="logo">🏏</div>
   <h1>Hyderabad Cricket Connect</h1>
-  <p>Find your team. Find your match.</p>
+  <p>Find teams. Arrange matches. Connect through cricket.</p>
 </header>
 
 <main>
-<section class="card">
-<h2>Let's arrange a match!</h2>
-<p>Connect with cricket players and teams across Hyderabad.</p>
+  <section class="card">
+    <h2>Cricket Match Registration</h2>
+    <p>Connect with cricket teams, players and academies across Hyderabad.</p>
 
-<form id="matchForm">
-  <label for="name">Your name</label>
-  <input id="name" required maxlength="60" placeholder="Enter your name">
+    <form id="matchForm">
+      <label for="name">Your name</label>
+      <input id="name" required maxlength="60" placeholder="Enter your name">
 
-  <label for="role">Who are you?</label>
-  <select id="role" required>
-    <option value="">Select your role</option>
-    <option>Player</option>
-    <option>Team Captain</option>
-    <option>Academy Coach</option>
-  </select>
+      <label for="role">Your role</label>
+      <select id="role" required>
+        <option value="">Choose your role</option>
+        <option>Player</option>
+        <option>Team Captain</option>
+        <option>Academy Coach</option>
+      </select>
 
-  <div id="academyFields" hidden>
-    <label for="academy">Academy name</label>
-    <input id="academy" maxlength="100" placeholder="Enter academy name">
+      <div id="coachFields" hidden>
+        <label for="academy">Academy name</label>
+        <input id="academy" maxlength="100" placeholder="Enter academy name">
 
-    <label for="coachNeed">What does your academy need?</label>
-    <select id="coachNeed">
-      <option>Find opponent teams</option>
-      <option>Find players</option>
-      <option>Announce trials</option>
-      <option>Arrange practice matches</option>
-    </select>
+        <label for="coachNeed">What do you need?</label>
+        <select id="coachNeed">
+          <option>Find opponent teams</option>
+          <option>Find players</option>
+          <option>Arrange practice matches</option>
+          <option>Share academy trial opportunities</option>
+        </select>
 
-    <label for="academyAge">Age groups coached</label>
-    <input id="academyAge" placeholder="e.g. Under-14, Under-16">
-  </div>
+        <label for="coachAge">Age groups coached</label>
+        <input id="coachAge" maxlength="100" placeholder="e.g. Under 14, Under 16">
+      </div>
 
-  <label for="ball">Cricket type</label>
-  <select id="ball" required>
-    <option value="">Select ball type</option>
-    <option>Leather ball</option>
-    <option>Tennis ball</option>
-  </select>
+      <label for="ball">Cricket ball type</label>
+      <select id="ball" required>
+        <option value="">Choose ball type</option>
+        <option>Leather ball</option>
+        <option>Tennis ball</option>
+      </select>
 
-  <div class="notice" id="safety">
-    🏏 Play safe. Follow the rules.
-    Choose your cricket format and follow ground safety instructions.
-    Leather-ball matches require appropriate protective equipment.
-  </div>
+      <div class="notice" id="safety">
+        🏏 Play safe. Follow the rules and ground safety instructions.
+      </div>
 
-  <label for="date">Preferred match date</label>
-  <input id="date" type="date" required>
+      <label for="date">Preferred match date</label>
+      <input id="date" type="date" required>
 
-  <label for="time">Preferred time</label>
-  <select id="time" required>
-    <option>Morning</option>
-    <option>Afternoon</option>
-    <option>Evening</option>
-  </select>
+      <label for="time">Preferred match time</label>
+      <select id="time" required>
+        <option value="">Choose time</option>
+        <option>Morning</option>
+        <option>Afternoon</option>
+        <option>Evening</option>
+      </select>
 
-  <label for="area">Area in Hyderabad</label>
-  <input id="area" required maxlength="100" placeholder="e.g. Kukatpally, Miyapur, Uppal">
+      <label for="area">Area in Hyderabad</label>
+      <input id="area" required maxlength="100" placeholder="e.g. Uppal, Kukatpally">
 
-  <label for="purpose">What are you looking for?</label>
-  <select id="purpose" required>
-    <option>Find an opponent team</option>
-    <option>Find players for my team</option>
-    <option>Find practice matches</option>
-    <option>Find academy or trial opportunities</option>
-  </select>
+      <label for="purpose">What are you looking for?</label>
+      <select id="purpose" required>
+        <option value="">Choose an option</option>
+        <option>Find an opponent team</option>
+        <option>Find players for my team</option>
+        <option>Find practice matches</option>
+        <option>Find an academy or trials</option>
+      </select>
 
-  <label for="players">Players available</label>
-  <select id="players">
-    <option>Full team (11 players)</option>
-    <option>6–10 players</option>
-    <option>Fewer than 6 players</option>
-  </select>
+      <label for="players">Players available</label>
+      <select id="players" required>
+        <option value="">Choose team size</option>
+        <option>Full team (11 players)</option>
+        <option>6–10 players</option>
+        <option>Fewer than 6 players</option>
+      </select>
 
-  <label for="age">Age group</label>
-  <select id="age" required>
-    <option value="">Select age group</option>
-    <option>Under 11</option>
-    <option>Under 14</option>
-    <option>Under 16</option>
-    <option>Under 19</option>
-    <option>18+ adult</option>
-    <option>Mixed / open age</option>
-  </select>
+      <label for="age">Age group</label>
+      <select id="age" required>
+        <option value="">Choose age group</option>
+        <option>Under 11</option>
+        <option>Under 14</option>
+        <option>Under 16</option>
+        <option>Under 19</option>
+        <option>18+ adult</option>
+        <option>Mixed/open age</option>
+      </select>
 
-  <label for="phone">Captain's or responsible adult's mobile number</label>
-  <input id="phone" type="tel" required inputmode="tel"
-         maxlength="20" placeholder="Enter mobile number"
-         pattern="[0-9+() -]{10,20}">
+      <label for="phone">Contact mobile number</label>
+      <input id="phone" type="tel" inputmode="tel" required
+             maxlength="20" pattern="[0-9+() -]{10,20}"
+             placeholder="Enter contact number">
 
-  <p class="small">Share contact details with another team only after both sides agree.</p>
+      <label for="details">Additional details (optional)</label>
+      <textarea id="details" rows="3" maxlength="500"
+                placeholder="Ground preference, overs, match fees, etc."></textarea>
 
-  <label for="details">Extra details (optional)</label>
-  <textarea id="details" rows="3" maxlength="500"
-            placeholder="Ground preference, match fees, overs, etc."></textarea>
+      <div class="notice">
+        <strong>CricHeroes account required</strong>
+        <p>Participants must have a CricHeroes account for match scoring.</p>
+        <a href="https://play.google.com/store/search?q=CricHeroes&c=apps"
+           target="_blank" rel="noopener">Find CricHeroes on Google Play</a>
+      </div>
 
-  <div class="notice">
-    <strong>CricHeroes is required</strong>
-    <p>Players and teams must have the CricHeroes app and an account for match scoring.</p>
-    <a href="https://play.google.com/store/search?q=CricHeroes&c=apps"
-       target="_blank" rel="noopener">Find CricHeroes on Google Play</a>
-  </div>
+      <label>
+        <input type="checkbox" id="cricAgree" required>
+        I confirm that I have or will create a CricHeroes account before playing.
+      </label>
 
-  <label style="font-weight:normal;line-height:1.5">
-    <input id="cricAgree" type="checkbox" required>
-    I confirm that I have or will create a CricHeroes account before playing.
-  </label>
+      <label>
+        <input type="checkbox" id="safetyAgree" required>
+        I agree to follow cricket rules, ground regulations and safety requirements.
+      </label>
 
-  <label style="font-weight:normal;line-height:1.5">
-    <input id="agree" type="checkbox" required>
-    I agree to follow cricket rules, ground instructions, and safety requirements.
-  </label>
+      <button type="submit">Preview Match Request</button>
+      <div id="result" role="status" aria-live="polite"></div>
+    </form>
+  </section>
 
-  <button type="submit">Preview Match Request</button>
-  <div id="result" role="status"></div>
-</form>
-</section>
-
-<section class="card">
-<h2>How it works</h2>
-<p>1. Enter your match requirements.</p>
-<p>2. Find a suitable team in your area.</p>
-<p>3. Contact each other and agree on the details.</p>
-<p>4. Confirm the match when both teams agree.</p>
-<p class="small">This is a prototype. Submissions are only previewed on your device; online saving and team matching are not connected yet.</p>
-</section>
+  <section class="card">
+    <h2>How it works</h2>
+    <p>1. Submit your match requirements.</p>
+    <p>2. Find suitable teams in your area.</p>
+    <p>3. Contact each other after agreeing to connect.</p>
+    <p>4. Confirm the match details together.</p>
+    <p class="small">Current demo: the form previews your request on this device. It does not yet save registrations online or automatically match teams.</p>
+  </section>
 </main>
 
 <footer>Hyderabad Cricket Connect · Play together. Play safely. 🏏</footer>
 
 <script>
-function skipIntro() {
-  const intro = document.getElementById("intro");
-  intro.style.animation = "none";
-  intro.style.display = "none";
-}
+const intro = document.getElementById("cricket-intro");
+
+document.getElementById("skip-intro").addEventListener("click", function() {
+  intro.remove();
+});
+
+setTimeout(function() {
+  if (intro && intro.isConnected) intro.remove();
+}, 3300);
 
 const role = document.getElementById("role");
-const academyFields = document.getElementById("academyFields");
+const coachFields = document.getElementById("coachFields");
 const academy = document.getElementById("academy");
 const ball = document.getElementById("ball");
 const safety = document.getElementById("safety");
 const date = document.getElementById("date");
 
 role.addEventListener("change", function() {
-  const isCoach = role.value === "Academy Coach";
-  academyFields.hidden = !isCoach;
-  academy.required = isCoach;
+  const coach = role.value === "Academy Coach";
+  coachFields.hidden = !coach;
+  academy.required = coach;
 });
 
 ball.addEventListener("change", function() {
   if (ball.value === "Leather ball") {
-    safety.innerHTML =
-      "<strong>Leather-ball safety:</strong> Appropriate protective equipment is essential. Use a helmet when batting against pace bowling, pads and gloves as appropriate, and follow ground safety instructions.";
+    safety.textContent =
+      "Leather-ball cricket: suitable protective equipment is essential. Follow ground rules and use appropriate protection while batting and fielding.";
   } else if (ball.value === "Tennis ball") {
-    safety.innerHTML =
-      "<strong>Tennis-ball safety:</strong> Agree on match rules before starting and follow ground safety instructions.";
+    safety.textContent =
+      "Tennis-ball cricket: agree on the match rules and follow all ground safety instructions.";
   } else {
-    safety.textContent = "Play safe. Follow the rules and ground safety instructions.";
+    safety.textContent =
+      "Play safe. Follow the rules and ground safety instructions.";
   }
 });
 
-const today = new Date();
-date.min = new Date(today.getTime() - today.getTimezoneOffset() * 60000)
+const now = new Date();
+date.min = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
   .toISOString().slice(0, 10);
 
-document.getElementById("matchForm").addEventListener("submit", function(e) {
-  e.preventDefault();
+document.getElementById("matchForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const data = {
+    name: document.getElementById("name").value,
+    role: role.value,
+    academy: academy.value,
+    ball: ball.value,
+    date: date.value,
+    time: document.getElementById("time").value,
+    area: document.getElementById("area").value,
+    purpose: document.getElementById("purpose").value,
+    players: document.getElementById("players").value,
+    age: document.getElementById("age").value
+  };
+
   const result = document.getElementById("result");
   result.style.display = "block";
   result.textContent =
-    "Preview ready! This request has not been sent or saved online. Online team matching will work after a secure registration system is connected.";
+    "Preview ready for " + data.name + ". Role: " + data.role +
+    ". Area: " + data.area + ". Ball: " + data.ball +
+    ". This request has NOT been sent or saved online.";
+
   result.scrollIntoView({ behavior: "smooth", block: "center" });
 });
 </script>

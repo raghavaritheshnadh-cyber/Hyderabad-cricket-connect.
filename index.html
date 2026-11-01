@@ -4,406 +4,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hyderabad Cricket Connect</title>
-
+<meta name="description" content="Hyderabad Cricket Connect helps cricket players and teams in Hyderabad find opponents, players, teams, grounds, coaches and box-cricket games.">
+<meta name="theme-color" content="#17643e">
+<title>HCC – Hyderabad Cricket Connect</title>
 <style>
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f2f7f2;
-  color: #203328;
-}
-
-header {
-  background: #17643e;
-  color: white;
-  text-align: center;
-  padding: 25px 15px;
-}
-
-header h1 { margin: 8px 0; font-size: 28px; }
-header p { margin-bottom: 0; }
-.logo { font-size: 45px; }
-
-main { max-width: 650px; margin: 22px auto; padding: 0 14px; }
-
-.card {
-  background: white;
-  padding: 22px;
-  margin-bottom: 20px;
-  border-radius: 14px;
-  box-shadow: 0 3px 12px #173d2510;
-}
-
-h2 { color: #17643e; }
-
-label {
-  display: block;
-  margin: 15px 0 7px;
-  font-weight: bold;
-}
-
-input:not([type="checkbox"]),
-select, textarea {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #bdcfc2;
-  border-radius: 8px;
-  background: white;
-  font-size: 16px;
-}
-
-input[type="checkbox"] {
-  width: auto;
-  margin-right: 7px;
-}
-
-button {
-  width: 100%;
-  padding: 14px;
-  margin-top: 18px;
-  border: 0;
-  border-radius: 8px;
-  background: #17643e;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.notice {
-  margin-top: 15px;
-  padding: 13px;
-  border-left: 4px solid #d4a32b;
-  border-radius: 6px;
-  background: #fff7df;
-  line-height: 1.6;
-}
-
-.small { font-size: 13px; color: #5c6a60; line-height: 1.5; }
-
-#result {
-  display: none;
-  padding: 13px;
-  margin-top: 15px;
-  background: #e5f5e9;
-  border-radius: 8px;
-  overflow-wrap: anywhere;
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  color: #5c6a60;
-  font-size: 13px;
-}
-
-/* Animated opening */
-#cricket-intro {
-  position: fixed;
-  inset: 0;
-  z-index: 99999;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: radial-gradient(circle, #23734a, #092719);
-  color: white;
-  animation: intro-fade 0.5s ease 2.7s forwards;
-}
-
-.intro-name {
-  padding: 0 15px;
-  text-align: center;
-  font-size: clamp(27px, 7vw, 43px);
-  font-weight: bold;
-  color: #ffe08a;
-  text-shadow: 0 0 16px #ffe08a50;
-  animation: title-in 0.6s ease both;
-}
-
-.intro-tagline {
-  text-align: center;
-  letter-spacing: 2px;
-}
-
-.intro-bat {
-  font-size: 90px;
-  transform-origin: 70% 80%;
-  animation: bat-swing 0.7s ease-in-out 0.35s both;
-}
-
-.intro-ball {
-  position: absolute;
-  top: 48%;
-  left: 20%;
-  font-size: 26px;
-  animation: ball-hit 1.2s ease-in 0.65s both;
-}
-
-#skip-intro {
-  position: absolute;
-  bottom: 25px;
-  width: auto;
-  padding: 10px 18px;
-  border: 1px solid white;
-  border-radius: 25px;
-  background: #16452e;
-  color: white;
-}
-
-@keyframes bat-swing {
-  from { transform: rotate(-60deg); }
-  to { transform: rotate(35deg); }
-}
-
-@keyframes ball-hit {
-  0% { left: 20%; top: 48%; transform: scale(1); }
-  60% { left: 72%; top: 32%; transform: scale(1.7); }
-  100% { left: 48%; top: 48%; transform: scale(6); opacity: 0; }
-}
-
-@keyframes title-in {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes intro-fade {
-  to { opacity: 0; visibility: hidden; pointer-events: none; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  #cricket-intro, .intro-name, .intro-bat, .intro-ball {
-    animation-duration: 0.01ms;
-  }
-}
+:root{--green:#17643e;--green2:#21834f;--lime:#dff2e5;--bg:#f2f7f2;--ink:#203328;--muted:#607267;--gold:#f2c14e;--white:#fff;--line:#dce8df}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.55}a{color:inherit}button,input,select,textarea{font:inherit}.wrap{width:min(1120px,92%);margin:auto}
+header{background:var(--green);color:white;position:sticky;top:0;z-index:20;box-shadow:0 3px 14px #123a2522}.nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-weight:900;letter-spacing:.4px;font-size:19px;text-decoration:none}.brand span{color:#c9f0d5}.navlinks{display:flex;gap:18px;align-items:center;flex-wrap:wrap}.navlinks a{text-decoration:none;font-size:14px}.navlinks a:hover{text-decoration:underline}.menu{display:none;background:transparent;border:1px solid #ffffff77;color:white;border-radius:8px;padding:7px 11px}
+.hero{background:linear-gradient(120deg,#e6f4e9,#f8fbf8 65%,#d7eddd);padding:66px 0 58px;overflow:hidden}.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}.eyebrow{color:var(--green);font-weight:800;text-transform:uppercase;letter-spacing:1.5px;font-size:12px}.hero h1{font-size:clamp(34px,5vw,56px);line-height:1.08;margin:12px 0 18px;color:#153c28}.hero p{font-size:18px;color:#4c6355;max-width:650px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.btn{display:inline-block;border:0;border-radius:9px;padding:12px 19px;text-decoration:none;font-weight:800;cursor:pointer}.primary{background:var(--green);color:white}.primary:hover{background:#104b2d}.secondary{background:white;color:var(--green);border:1px solid #b8d4c0}.cricket-art{min-height:240px;border-radius:24px;background:linear-gradient(145deg,#17643e,#0c3e28);color:white;display:grid;place-items:center;text-align:center;padding:28px;box-shadow:0 16px 35px #16492b22;position:relative;overflow:hidden}.cricket-art .ball{font-size:65px;animation:ballhit 3.5s ease-in-out infinite}.cricket-art strong{display:block;font-size:25px}.cricket-art small{color:#d5f0dd}@keyframes ballhit{0%{transform:translate(-75px,25px) rotate(0)}45%{transform:translate(35px,-20px) rotate(220deg)}65%{transform:translate(65px,4px) rotate(360deg)}100%{transform:translate(-75px,25px) rotate(720deg)}}.skip{position:absolute;right:12px;top:12px;border:1px solid #ffffff77;background:#ffffff18;color:white;border-radius:20px;padding:5px 10px;cursor:pointer}
+.notice{background:#fff8df;border:1px solid #f0df9e;border-radius:12px;padding:14px 16px;margin:22px auto;color:#5e4a14}.section{padding:54px 0}.section-head{text-align:center;max-width:720px;margin:0 auto 28px}.section h2{font-size:clamp(26px,4vw,36px);color:#173f2a;margin:0 0 8px}.section-head p{color:var(--muted);margin:0}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.card{background:white;border:1px solid var(--line);border-radius:15px;padding:22px;box-shadow:0 5px 18px #163c2410}.card .emoji{font-size:32px}.card h3{margin:10px 0 6px;color:#17442d}.card p{color:var(--muted);margin:0 0 15px}.card a{color:var(--green);font-weight:800;text-decoration:none}.card a:hover{text-decoration:underline}.how{background:#e8f3eb}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.step{background:white;padding:18px;border-radius:13px}.num{width:32px;height:32px;border-radius:50%;background:var(--green);color:white;display:grid;place-items:center;font-weight:bold}.step h3{font-size:17px;margin:10px 0 5px}.step p{font-size:14px;color:var(--muted);margin:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}.panel{background:white;border:1px solid var(--line);border-radius:15px;padding:23px}.panel h3{color:var(--green);margin-top:0}.panel li{margin:8px 0}.form-section{background:#e8f3eb}.formbox{max-width:760px;margin:auto;background:white;border:1px solid var(--line);padding:24px;border-radius:16px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field label{display:block;font-weight:700;font-size:14px;margin-bottom:5px}.field input,.field select,.field textarea{width:100%;border:1px solid #cbd9ce;border-radius:8px;padding:11px;background:#fff;color:var(--ink)}.field.full{grid-column:1/-1}.check{display:flex;gap:9px;align-items:flex-start;font-size:14px;margin:15px 0}.check input{margin-top:5px}.hint{font-size:13px;color:var(--muted)}.warning{background:#fff5dc;border-left:4px solid var(--gold);padding:12px;border-radius:7px;font-size:14px}.status{display:none;padding:12px;background:#e3f5e8;border-radius:8px;margin-top:12px;color:#14552f}.faq details{background:white;border:1px solid var(--line);border-radius:10px;padding:14px;margin:9px 0}.faq summary{font-weight:800;cursor:pointer}.faq p{color:var(--muted)}footer{background:#123c28;color:#e7f3ea;padding:35px 0}footer a{color:white}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.small{font-size:13px;color:#c5d9cb}
+@media(max-width:760px){.navlinks{display:none;position:absolute;top:70px;left:0;right:0;background:#145332;padding:16px 4%;flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.menu{display:block}.hero-grid,.two{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr}.cricket-art{min-height:180px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
+@media(max-width:430px){.cards{grid-template-columns:1fr}.hero{padding:42px 0}.section{padding:40px 0}}
 </style>
 </head>
-
 <body>
-
-<div id="cricket-intro">
-  <div class="intro-name">HYDERABAD<br>CRICKET CONNECT</div>
-  <div class="intro-bat">🏏</div>
-  <div class="intro-ball">🔴</div>
-  <p class="intro-tagline">YOUR CITY. YOUR TEAM. YOUR GAME.</p>
-  <button id="skip-intro" type="button">Skip Intro</button>
-</div>
-
-<header>
-  <div class="logo">🏏</div>
-  <h1>Hyderabad Cricket Connect</h1>
-  <p>Find teams. Arrange matches. Connect through cricket.</p>
-</header>
-
-<main>
-  <section class="card">
-    <h2>Cricket Match Registration</h2>
-    <p>Connect with cricket teams, players and academies across Hyderabad.</p>
-
-    <form id="matchForm">
-      <label for="name">Your name</label>
-      <input id="name" required maxlength="60" placeholder="Enter your name">
-
-      <label for="role">Your role</label>
-      <select id="role" required>
-        <option value="">Choose your role</option>
-        <option>Player</option>
-        <option>Team Captain</option>
-        <option>Academy Coach</option>
-      </select>
-
-      <div id="coachFields" hidden>
-        <label for="academy">Academy name</label>
-        <input id="academy" maxlength="100" placeholder="Enter academy name">
-
-        <label for="coachNeed">What do you need?</label>
-        <select id="coachNeed">
-          <option>Find opponent teams</option>
-          <option>Find players</option>
-          <option>Arrange practice matches</option>
-          <option>Share academy trial opportunities</option>
-        </select>
-
-        <label for="coachAge">Age groups coached</label>
-        <input id="coachAge" maxlength="100" placeholder="e.g. Under 14, Under 16">
-      </div>
-
-      <label for="ball">Cricket ball type</label>
-      <select id="ball" required>
-        <option value="">Choose ball type</option>
-        <option>Leather ball</option>
-        <option>Tennis ball</option>
-      </select>
-
-      <div class="notice" id="safety">
-        🏏 Play safe. Follow the rules and ground safety instructions.
-      </div>
-
-      <label for="date">Preferred match date</label>
-      <input id="date" type="date" required>
-
-      <label for="time">Preferred match time</label>
-      <select id="time" required>
-        <option value="">Choose time</option>
-        <option>Morning</option>
-        <option>Afternoon</option>
-        <option>Evening</option>
-      </select>
-
-      <label for="area">Area in Hyderabad</label>
-      <input id="area" required maxlength="100" placeholder="e.g. Uppal, Kukatpally">
-
-      <label for="purpose">What are you looking for?</label>
-      <select id="purpose" required>
-        <option value="">Choose an option</option>
-        <option>Find an opponent team</option>
-        <option>Find players for my team</option>
-        <option>Find practice matches</option>
-        <option>Find an academy or trials</option>
-      </select>
-
-      <label for="players">Players available</label>
-      <select id="players" required>
-        <option value="">Choose team size</option>
-        <option>Full team (11 players)</option>
-        <option>6–10 players</option>
-        <option>Fewer than 6 players</option>
-      </select>
-
-      <label for="age">Age group</label>
-      <select id="age" required>
-        <option value="">Choose age group</option>
-        <option>Under 11</option>
-        <option>Under 14</option>
-        <option>Under 16</option>
-        <option>Under 19</option>
-        <option>18+ adult</option>
-        <option>Mixed/open age</option>
-      </select>
-
-      <label for="phone">Contact mobile number</label>
-      <input id="phone" type="tel" inputmode="tel" required
-             maxlength="20" pattern="[0-9+() -]{10,20}"
-             placeholder="Enter contact number">
-
-      <label for="details">Additional details (optional)</label>
-      <textarea id="details" rows="3" maxlength="500"
-                placeholder="Ground preference, overs, match fees, etc."></textarea>
-
-      <div class="notice">
-        <strong>CricHeroes account required</strong>
-        <p>Participants must have a CricHeroes account for match scoring.</p>
-        <a href="https://play.google.com/store/search?q=CricHeroes&c=apps"
-           target="_blank" rel="noopener">Find CricHeroes on Google Play</a>
-      </div>
-
-      <label>
-        <input type="checkbox" id="cricAgree" required>
-        I confirm that I have or will create a CricHeroes account before playing.
-      </label>
-
-      <label>
-        <input type="checkbox" id="safetyAgree" required>
-        I agree to follow cricket rules, ground regulations and safety requirements.
-      </label>
-
-      <button type="submit">Preview Match Request</button>
-      <div id="result" role="status" aria-live="polite"></div>
-    </form>
-  </section>
-
-  <section class="card">
-    <h2>How it works</h2>
-    <p>1. Submit your match requirements.</p>
-    <p>2. Find suitable teams in your area.</p>
-    <p>3. Contact each other after agreeing to connect.</p>
-    <p>4. Confirm the match details together.</p>
-    <p class="small">Current demo: the form previews your request on this device. It does not yet save registrations online or automatically match teams.</p>
-  </section>
+<header><div class="wrap nav"><a class="brand" href="#home">🏏 HCC <span>HYDERABAD CRICKET CONNECT</span></a><button class="menu" onclick="document.querySelector('.navlinks').classList.toggle('open')">Menu ☰</button><nav class="navlinks"><a href="#home">Home</a><a href="#services">Services</a><a href="#how">How it works</a><a href="#safety">Safety</a><a href="#faq">FAQs</a><a href="#register">Register</a></nav></div></header>
+<main id="home">
+<section class="hero"><div class="wrap hero-grid"><div><div class="eyebrow">Hyderabad's cricket connection platform</div><h1>Find your team.<br>Find your opponent.<br>Play more cricket.</h1><p>HCC helps cricket players and teams connect across Hyderabad — whether you need an opponent, extra players, a team, a ground or coaching.</p><div class="actions"><a class="btn primary" href="#services">Explore services</a><a class="btn secondary" href="#register">Register interest</a></div><p class="hint">CONNECT • PLAY • GROW</p></div><div class="cricket-art" id="intro"><button class="skip" onclick="document.querySelector('.ball').style.animation='none';this.style.display='none'">Skip animation</button><div><div class="ball">🏏 🏐</div><strong>HCC – Hyderabad Cricket Connect</strong><small>Connect • Play • Grow</small></div></div></div></section>
+<div class="wrap"><div class="notice"><b>Important:</b> HCC is being developed. This page explains the planned services. Registration and match booking are not yet live; do not submit sensitive or private information here.</div></div>
+<section class="section" id="services"><div class="wrap"><div class="section-head"><div class="eyebrow">What you can do with HCC</div><h2>One platform. Six cricket services.</h2><p>Choose what you need. Each service is designed to make finding cricket connections easier.</p></div><div class="cards">
+<article class="card"><div class="emoji">🤝</div><h3>Find an Opponent Team</h3><p>Your team is ready but needs another team? Find teams interested in arranging an organised match.</p><a href="#register">Register interest →</a></article>
+<article class="card"><div class="emoji">🏏</div><h3>Find Players</h3><p>Need an opener, bowler, all-rounder or wicketkeeper? Connect with players looking for matches.</p><a href="#register">Register interest →</a></article>
+<article class="card"><div class="emoji">👥</div><h3>Join a Team</h3><p>Are you an individual player? Create your player profile once and look for teams to join.</p><a href="#register">Register interest →</a></article>
+<article class="card"><div class="emoji">🏟️</div><h3>Find Cricket Grounds</h3><p>Explore ground information and send a booking enquiry. Ground availability must be confirmed by the owner.</p><a href="#register">Register interest →</a></article>
+<article class="card"><div class="emoji">🎯</div><h3>Coaches & Academies</h3><p>Discover coaching options, training locations and academy information.</p><a href="#register">Register interest →</a></article>
+<article class="card"><div class="emoji">⚡</div><h3>Box Cricket</h3><p>Create a casual box-cricket game or join an existing game with other players.</p><a href="#register">Register interest →</a></article>
+</div></div></section>
+<section class="section how" id="how"><div class="wrap"><div class="section-head"><div class="eyebrow">Simple process</div><h2>How HCC will work</h2><p>Register once. Build your profile. Use the services you need without registering again for every match.</p></div><div class="steps">
+<div class="step"><div class="num">1</div><h3>Register once</h3><p>Create one HCC account and choose your role. Add your cricket details to your profile.</p></div>
+<div class="step"><div class="num">2</div><h3>Choose a service</h3><p>Find an opponent, find players, join a team, explore grounds or coaching.</p></div>
+<div class="step"><div class="num">3</div><h3>Connect safely</h3><p>Review suggestions and communicate only after both sides agree.</p></div>
+<div class="step"><div class="num">4</div><h3>Play and grow</h3><p>Confirm match details, follow safety rules and enjoy your cricket.</p></div>
+</div></div></section>
+<section class="section"><div class="wrap two"><div class="panel"><h3>For players</h3><ul><li>Register once as an individual player.</li><li>Add your playing role and ball preference.</li><li>Look for teams and match opportunities.</li><li>Update your availability when needed.</li></ul></div><div class="panel"><h3>For captains and teams</h3><ul><li>Create a team profile.</li><li>Find opponent teams for organised matches.</li><li>Find extra players to complete your squad.</li><li>Review requests before accepting anyone.</li></ul></div></div></section>
+<section class="section" id="safety"><div class="wrap two"><div><div class="eyebrow">Safety first</div><h2>Play fair. Play safe. Go home safe.</h2><p>Safety is part of every HCC match journey. Verify the opponent and venue, agree on match details and never feel pressured to attend.</p></div><div class="panel"><ul><li>Players under 18 must have parent or guardian permission.</li><li>Inform your family about the venue, date and time.</li><li>Use suitable protective equipment, especially for leather-ball cricket.</li><li>Do not share personal details publicly.</li><li>Travel with trusted teammates or an adult.</li><li>Stop and seek help if anything feels unsafe.</li></ul></div></div></section>
+<section class="section"><div class="wrap two"><div class="panel"><h3>CricHeroes</h3><p>HCC is intended for finding cricket connections. CricHeroes can be used separately for scoring and scorecards.</p><p class="hint">Any mandatory account requirement or integration will be confirmed before launch. HCC is not claiming a partnership with CricHeroes.</p><a href="https://www.cricheroes.com/" target="_blank" rel="noopener">Visit CricHeroes →</a></div><div class="panel"><h3>Our launch approach</h3><p>We plan to start in Hyderabad, test with local players and captains, verify information and improve the platform based on feedback.</p><p>Ground listings, booking enquiries and match suggestions will only be confirmed when the relevant people verify them.</p></div></div></section>
+<section class="section form-section" id="register"><div class="wrap"><div class="section-head"><div class="eyebrow">Early interest</div><h2>Be part of HCC</h2><p>This is a preview form only. Secure account registration will be enabled after the backend is connected.</p></div><div class="formbox"><div class="warning"><b>Preview only:</b> This form does not send or save your details. Please do not enter your real phone number or sensitive information yet.</div><form id="interestForm"><div class="form-grid">
+<div class="field"><label for="name">Name (demo)</label><input id="name" placeholder="Your name" required></div>
+<div class="field"><label for="role">Your role</label><select id="role" required><option value="">Choose role</option><option>Player</option><option>Captain</option><option>Coach</option><option>Academy</option></select></div>
+<div class="field"><label for="area">Hyderabad area</label><input id="area" placeholder="e.g. Kukatpally"></div>
+<div class="field"><label for="ball">Ball preference</label><select id="ball"><option value="">Choose preference</option><option>Leather ball</option><option>Tennis ball</option><option>Both</option></select></div>
+<div class="field full" id="roleExtra"><label for="details">Cricket details (demo)</label><textarea id="details" rows="3" placeholder="For example: batting role, team name or coaching experience"></textarea></div>
+<div class="field full"><label for="service">Which service interests you?</label><select id="service"><option>Find an opponent team</option><option>Find players</option><option>Join a team</option><option>Find cricket grounds</option><option>Coaches and academies</option><option>Box cricket</option></select></div>
+</div><label class="check"><input type="checkbox" required><span>I understand this is a non-submitting preview and not a confirmed registration.</span></label><button class="btn primary" type="submit">Preview my selection</button><div class="status" id="status" role="status"></div></form></div></div></section>
+<section class="section faq" id="faq"><div class="wrap"><div class="section-head"><div class="eyebrow">Need to know</div><h2>Frequently asked questions</h2></div>
+<details><summary>Do I need a team to register?</summary><p>No. Individual players will be able to register independently and look for teams.</p></details>
+<details><summary>Do I need to register again for every match?</summary><p>The plan is one account and one profile. You can use that profile for different HCC services and match requests.</p></details>
+<details><summary>Can I book a ground instantly?</summary><p>Not yet. Ground enquiries will need confirmation from the ground owner before a booking is confirmed.</p></details>
+<details><summary>Is HCC fully operational now?</summary><p>No. This is the first public information preview. Secure registration, matching, booking enquiries and dashboards are still being developed.</p></details>
+</div></section>
 </main>
-
-<footer>Hyderabad Cricket Connect · Play together. Play safely. 🏏</footer>
-
+<footer><div class="wrap foot"><div><b>HCC – HYDERABAD CRICKET CONNECT</b><div class="small">CONNECT • PLAY • GROW</div><p class="small">Helping Hyderabad's cricket community connect.</p></div><div class="small"><a href="#services">Services</a> · <a href="#safety">Safety</a> · <a href="#faq">FAQs</a> · <a href="#register">Register interest</a><p>© 2026 HCC. Independent community project.</p></div></div></footer>
 <script>
-const intro = document.getElementById("cricket-intro");
-
-document.getElementById("skip-intro").addEventListener("click", function() {
-  intro.remove();
-});
-
-setTimeout(function() {
-  if (intro && intro.isConnected) intro.remove();
-}, 3300);
-
-const role = document.getElementById("role");
-const coachFields = document.getElementById("coachFields");
-const academy = document.getElementById("academy");
-const ball = document.getElementById("ball");
-const safety = document.getElementById("safety");
-const date = document.getElementById("date");
-
-role.addEventListener("change", function() {
-  const coach = role.value === "Academy Coach";
-  coachFields.hidden = !coach;
-  academy.required = coach;
-});
-
-ball.addEventListener("change", function() {
-  if (ball.value === "Leather ball") {
-    safety.textContent =
-      "Leather-ball cricket: suitable protective equipment is essential. Follow ground rules and use appropriate protection while batting and fielding.";
-  } else if (ball.value === "Tennis ball") {
-    safety.textContent =
-      "Tennis-ball cricket: agree on the match rules and follow all ground safety instructions.";
-  } else {
-    safety.textContent =
-      "Play safe. Follow the rules and ground safety instructions.";
-  }
-});
-
-const now = new Date();
-date.min = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
-  .toISOString().slice(0, 10);
-
-document.getElementById("matchForm").addEventListener("submit", function(event) {
-  event.preventDefault();
-
-  const data = {
-    name: document.getElementById("name").value,
-    role: role.value,
-    academy: academy.value,
-    ball: ball.value,
-    date: date.value,
-    time: document.getElementById("time").value,
-    area: document.getElementById("area").value,
-    purpose: document.getElementById("purpose").value,
-    players: document.getElementById("players").value,
-    age: document.getElementById("age").value
-  };
-
-  const result = document.getElementById("result");
-  result.style.display = "block";
-  result.textContent =
-    "Preview ready for " + data.name + ". Role: " + data.role +
-    ". Area: " + data.area + ". Ball: " + data.ball +
-    ". This request has NOT been sent or saved online.";
-
-  result.scrollIntoView({ behavior: "smooth", block: "center" });
-});
+const role=document.getElementById('role'),extra=document.getElementById('details');
+role.addEventListener('change',()=>{const labels={Player:'Playing role, experience and availability (demo)',Captain:'Team name and team details (demo)',Coach:'Coaching experience and details (demo)',Academy:'Academy name and location (demo)'};extra.placeholder=labels[role.value]||'Add relevant cricket details';});
+document.getElementById('interestForm').addEventListener('submit',e=>{e.preventDefault();document.getElementById('status').style.display='block';document.getElementById('status').textContent='Preview complete. Nothing has been submitted or stored. Secure registration will be added after backend setup.';});
 </script>
-<div style="text-align:center; margin:20px;">
-  <a href="https://forms.gle/aiNhgsw6sJkScrXz8"
-     target="_blank"
-     style="background:#16803c; color:white; padding:14px 24px;
-     border-radius:10px; text-decoration:none; font-weight:bold;">
-    Register for a Match
-  </a>
-</div>
-</body>
-</html>
-
+</body></html>
